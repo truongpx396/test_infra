@@ -51,10 +51,10 @@ releases:
 # helm install ingress stable/nginx-ingress \
 #  --namespace kube-system -f charts/nginx-ingress/values.yaml
 # -
-- name: ingress
-  chart: stable/nginx-ingress
-  version: 1.34.1
-  namespace: kube-system
-  values:
-  - "./charts/nginx-ingress/values.yaml"
-  - "./charts/nginx-ingress/values.{{ .Environment.Name }}.yaml"
+# - name: ingress
+#   chart: stable/nginx-ingress
+#   version: 1.34.1
+#   namespace: kube-system
+#   values:
+#   - "./charts/nginx-ingress/values.yaml"
+#   - "./charts/nginx-ingress/values.{{ .Environment.Name }}.yaml"
