@@ -46,7 +46,7 @@ resource "kubernetes_deployment" "terramino" {
   }
 
   spec {
-    replicas = 3
+    replicas = 4
     selector {
       match_labels = {
         app = var.application_name
