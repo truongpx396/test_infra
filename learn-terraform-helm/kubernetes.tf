@@ -1,7 +1,4 @@
-variable "region" {
-  default     = "ap-southeast-1"
-  description = "AWS region"
-}
+
 
 provider "aws" {
   region = var.region
