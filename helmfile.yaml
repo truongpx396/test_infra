@@ -1,6 +1,7 @@
 repositories:
   - name: stable
-    url: https://kubernetes-charts.storage.googleapis.com
+    url: https://charts.helm.sh/stable
+    #url: https://kubernetes-charts.storage.googleapis.com
 
 helmDefaults:
   tillerless: true
