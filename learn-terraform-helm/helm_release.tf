@@ -37,26 +37,26 @@ resource "kubernetes_namespace" "monitoring" {
   }
 }
 
-module "helm_kube_prometheus_stack" {
-  source = "git::https://github.com/StatCan/terraform-kubernetes-kube-prometheus-stack"
+# module "helm_kube_prometheus_stack" {
+#   source = "git::https://github.com/StatCan/terraform-kubernetes-kube-prometheus-stack"
 
-  chart_version = "13.10.0"
-  dependencies = [
-    kubernetes_namespace.monitoring.id,
-    kubernetes_namespace.istio_system.id
-  ]
+#   chart_version = "13.10.0"
+#   dependencies = [
+#     kubernetes_namespace.monitoring.id,
+#     kubernetes_namespace.istio_system.id
+#   ]
 
-  helm_namespace  = kubernetes_namespace.monitoring.id
-  helm_release    = "kube-prometheus-stack"
-  helm_repository = "https://prometheus-community.github.io/helm-charts"
+#   helm_namespace  = kubernetes_namespace.monitoring.id
+#   helm_release    = "kube-prometheus-stack"
+#   helm_repository = "https://prometheus-community.github.io/helm-charts"
 
-  enable_destinationrules = true
-  enable_prometheusrules  = true
+#   enable_destinationrules = true
+#   enable_prometheusrules  = true
 
-  values = <<EOF
+#   values = <<EOF
 
-EOF
-}
+# EOF
+# }
 
 module "kiali_operator" {
   source = "git::https://github.com/DNXLabs/terraform-aws-eks-kiali-operator.git"
