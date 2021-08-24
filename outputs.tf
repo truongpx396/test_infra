@@ -1,3 +1,8 @@
+output "cluster" {
+  description ="EKS cluster"
+  value=data.aws_eks_cluster.cluster
+}
+
 output "cluster_id" {
   description = "EKS cluster ID."
   value       = module.eks.cluster_id
