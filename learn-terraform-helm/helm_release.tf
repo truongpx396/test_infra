@@ -30,3 +30,9 @@ module "grafana_prometheus_monitoring" {
 
   enabled = true
 }
+
+module "kiali_operator" {
+  source = "git::https://github.com/DNXLabs/terraform-aws-eks-kiali-operator.git"
+
+  enabled = true
+}

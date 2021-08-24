@@ -12,6 +12,10 @@ data "terraform_remote_state" "eks" {
 }
 
 # Retrieve EKS cluster configuration
+data "aws_eks_cluster" "cluster_o" {
+  name = data.terraform_remote_state.eks.outputs.cluster
+}
+
 data "aws_eks_cluster" "cluster" {
   name = data.terraform_remote_state.eks.outputs.cluster_id
 }
