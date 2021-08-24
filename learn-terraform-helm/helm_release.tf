@@ -42,11 +42,11 @@ module "helm_kube_prometheus_stack" {
 
   chart_version = "13.10.0"
   dependencies = [
-    kubernetes_namespace.monitoring.depended_on,
-    helm_release.istiod.depended_on,
+    kubernetes_namespace.monitoring,
+    helm_release.istiod,
   ]
 
-  helm_namespace  = kubernetes_namespace.monitoring.name
+  helm_namespace  = kubernetes_namespace.monitoring.id
   helm_release    = "kube-prometheus-stack"
   helm_repository = "https://prometheus-community.github.io/helm-charts"
 
