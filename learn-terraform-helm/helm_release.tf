@@ -31,16 +31,22 @@ resource "helm_release" "kubewatch" {
 #   enabled = true
 # }
 
+resource "kubernetes_namespace" "monitoring" {
+  metadata {
+    name = "monitoring"
+  }
+}
+
 module "helm_kube_prometheus_stack" {
   source = "git::https://github.com/StatCan/terraform-kubernetes-kube-prometheus-stack"
 
   chart_version = "13.10.0"
   dependencies = [
-    module.namespace_monitoring.depended_on,
-    module.helm_istio.depended_on,
+    kubernetes_namespace.monitoring.depended_on,
+    helm_release.istiod.depended_on,
   ]
 
-  helm_namespace  = module.namespace_monitoring.name
+  helm_namespace  = kubernetes_namespace.monitoring.name
   helm_release    = "kube-prometheus-stack"
   helm_repository = "https://prometheus-community.github.io/helm-charts"
 
