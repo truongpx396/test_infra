@@ -32,7 +32,7 @@ resource "helm_release" "kubewatch" {
 # }
 
 module "helm_kube_prometheus_stack" {
-  source = "git::https://github.com/canada-ca-terraform-modules/terraform-kubernetes-kube-prometheus-stack?ref=v1.0.0"
+  source = "git::https://github.com/StatCan/terraform-kubernetes-kube-prometheus-stack"
 
   chart_version = "13.10.0"
   dependencies = [
