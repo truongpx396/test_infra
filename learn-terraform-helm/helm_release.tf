@@ -43,7 +43,7 @@ module "helm_kube_prometheus_stack" {
   chart_version = "13.10.0"
   dependencies = [
     kubernetes_namespace.monitoring,
-    helm_release.istiod,
+    kubernetes_namespace.istio_system
   ]
 
   helm_namespace  = kubernetes_namespace.monitoring.id
