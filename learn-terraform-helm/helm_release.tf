@@ -25,10 +25,31 @@ resource "helm_release" "kubewatch" {
   }
 }
 
-module "grafana_prometheus_monitoring" {
-  source = "git::https://github.com/DNXLabs/terraform-aws-eks-grafana-prometheus.git"
+# module "grafana_prometheus_monitoring" {
+#   source = "git::https://github.com/DNXLabs/terraform-aws-eks-grafana-prometheus.git"
 
-  enabled = true
+#   enabled = true
+# }
+
+module "helm_kube_prometheus_stack" {
+  source = "git::https://github.com/canada-ca-terraform-modules/terraform-kubernetes-kube-prometheus-stack?ref=v1.0.0"
+
+  chart_version = "13.10.0"
+  dependencies = [
+    module.namespace_monitoring.depended_on,
+    module.helm_istio.depended_on,
+  ]
+
+  helm_namespace  = module.namespace_monitoring.name
+  helm_release    = "kube-prometheus-stack"
+  helm_repository = "https://prometheus-community.github.io/helm-charts"
+
+  enable_destinationrules = true
+  enable_prometheusrules  = true
+
+  values = <<EOF
+
+EOF
 }
 
 module "kiali_operator" {
