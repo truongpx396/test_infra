@@ -6,10 +6,9 @@ resource "kubernetes_namespace" "monitoring" {
 }
 
 resource "helm_release" "istio_kube_prometheus" {
-  name  = "kube-prometheus"
+  name  = "kube-prometheus-stack"
   chart = "kube-prometheus-stack"
 
-  timeout = 1200
   cleanup_on_fail = true
   force_update    = true
   namespace       = "monitoring"
