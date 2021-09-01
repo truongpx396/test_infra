@@ -42,3 +42,6 @@ kubeconfig*
 .env.secrets
 
 .shoal/*
+.shoal/workspaces/*
+
+.DS_Store
