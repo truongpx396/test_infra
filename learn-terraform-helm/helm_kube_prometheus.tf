@@ -9,7 +9,7 @@ resource "helm_release" "istio_kube_prometheus" {
   name  = "kube-prometheus"
   chart = "kube-prometheus-stack"
 
-  timeout = 120
+  timeout = 1200
   cleanup_on_fail = true
   force_update    = true
   namespace       = "monitoring"
