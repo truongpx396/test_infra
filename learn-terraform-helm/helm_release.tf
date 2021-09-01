@@ -31,11 +31,6 @@ resource "helm_release" "kubewatch" {
 #   enabled = true
 # }
 
-resource "kubernetes_namespace" "monitoring" {
-  metadata {
-    name = "monitoring"
-  }
-}
 
 # module "helm_kube_prometheus_stack" {
 #   source = "git::https://github.com/StatCan/terraform-kubernetes-kube-prometheus-stack"

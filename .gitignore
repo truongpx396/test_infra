@@ -40,3 +40,5 @@ override.tf.json
 kubeconfig*
 
 .env.secrets
+
+.shoal/*
