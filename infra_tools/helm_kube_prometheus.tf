@@ -5,7 +5,7 @@ resource "kubernetes_namespace" "monitoring" {
   }
 }
 
-resource "helm_release" "istio_kube_prometheus" {
+resource "helm_release" "kube_prometheus" {
   name  = "kube-prometheus-stack"
   chart = "kube-prometheus-stack"
 
